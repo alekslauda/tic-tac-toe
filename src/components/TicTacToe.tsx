@@ -13,9 +13,9 @@ export default function TicTacToe() {
   const [gameBoard, setGameBoard] = useState(Array(9).fill(null));
 
   const gameInit = function() {
-    const answer = prompt("Are you ready to play? Enter Yes or No.");
+    const answer = prompt("Are you ready to play? (y/n)");
 
-    if (!answer || !['Yes', 'Y', 'y'].includes(answer)) {
+    if (!answer || !['yes', 'y'].includes(answer.toLocaleLowerCase())) {
       return;
     }
     
