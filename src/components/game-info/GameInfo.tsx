@@ -29,19 +29,19 @@ export default function GameInfo({ turn, gameState, marker, resetGame, nextMove 
       resetGamePossibility = true;
       template.push(
         (<li key={`'game_draw_1_${ new Date().getTime() }`}>The End! Game is draw</li>),
-        (<li style={outcomeInlineStyle('orange')} key={`'game_draw_2_${ new Date().getTime() }`}>Nobody wins! <strong>:X :X :X</strong></li>)
+        (<li style={outcomeInlineStyle('black')} key={`'game_draw_2_${ new Date().getTime() }`}>Nobody wins! &#129296;&#129296;&#129296;</li>)
       )
     } else if(gameState === GameState.WIN) {
       resetGamePossibility = true;
       template.push(
         (<li key={`'game_win_1_${ new Date().getTime() }`}>We have a winner!</li>), 
-        (<li style={outcomeInlineStyle('green')} key={`'game_win_2_${ new Date().getTime() }`}>{nextMove} wins the game! <strong>:) :) :)</strong></li>),
+        (<li style={outcomeInlineStyle('green')} key={`'game_win_2_${ new Date().getTime() }`}>{nextMove} wins the game! &#128526;&#128526;&#128526;</li>),
       )
     } else if(gameState === GameState.NOT_STARTED) {
       resetGamePossibility = true;
       template.push(
-        (<li key={`'game_not_started_1_${ new Date().getTime() }`}>Give correct answers to the Questions!</li>),
-        (<li key={`'game_not_started_2_${ new Date().getTime() }`}>Otherwise no Tic Tac Toe for you! <strong>:( :( :(</strong></li>)
+        (<li key={`'game_not_started_1_${ new Date().getTime() }`}>&#129313;&#129313;&#129313;</li>),
+        (<li key={`'game_not_started_2_${ new Date().getTime() }`}>&#128565;&#128565;&#128565;</li>),
       )
     }
 
@@ -54,11 +54,12 @@ export default function GameInfo({ turn, gameState, marker, resetGame, nextMove 
 
   return (
     <div id="infobox">
-      <h1 className="about">Game info:</h1>
+      <h1 className="about">GAME INFO</h1>
 
       <ul id="infolist">
         {templateFactory().map(t => t)}
       </ul>
+
     </div>
   )
 }
