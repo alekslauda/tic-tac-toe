@@ -1,3 +1,4 @@
+import { Game } from '../../constants/app-constants';
 import './Board.css';
 
 interface BoardProps {
@@ -44,6 +45,12 @@ export function Board(props: BoardProps) {
                 rowClasses.push('vert', 'hori');
               }
               break;
+          }
+
+          if (props.gameBoard[v] === Game.MARKER_O) {
+            rowClasses.push('markero')
+          } else if (props.gameBoard[v] === Game.MARKER_X) {
+            rowClasses.push('markerx')
           }
 
           return (
