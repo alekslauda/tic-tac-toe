@@ -13,16 +13,24 @@ export default function TicTacToe() {
   const [gameBoard, setGameBoard] = useState(Array(9).fill(null));
 
   const gameInit = function() {
-    const marker = prompt("Player 1: Do you want to be X or O?");
+    const answer = prompt("Are you ready to play? Enter Yes or No.");
 
+    if (!answer || !['Yes', 'Y', 'y'].includes(answer)) {
+      return;
+    }
+    
+    const marker = prompt("Player 1: Do you want to be X or O?");
+    
     if (!marker) {
       return;
     }
     const markerToUpper: any = marker.toLocaleUpperCase();
-
+    
     if (![Game.MARKER_X, Game.MARKER_O].includes(markerToUpper)) {
       return;
     }
+    
+    setGameState(GameState.GAME_ON)
 
     if (markerToUpper === 'X') {
       setMarker([Game.MARKER_X, Game.MARKER_O]);
@@ -30,14 +38,9 @@ export default function TicTacToe() {
       setMarker([Game.MARKER_O, Game.MARKER_X])
     }
 
-    const answer = prompt("Are you ready to play? Enter Yes or No.");
-
-    if (answer === 'Yes') {
-      setGameState(GameState.GAME_ON)
-    }
-
     const turn = Math.round(Math.random()) > 0 ? Game.PLAYER1 : Game.PLAYER2;
     setTurn(turn);
+    setNextMove(turn);
   }
 
   useEffect(() => {
